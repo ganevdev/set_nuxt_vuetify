@@ -1,7 +1,7 @@
 <template>
   <v-app>
 
-    <MainNav />
+    <MainNavbar />
 
     <v-content>
       <v-container fluid>
@@ -17,19 +17,17 @@
 </template>
 
 <script>
-import MainNav from "~/components/MainNav.vue";
+import MainNavbar from "~/components/MainNavbar.vue";
 import MainFooter from "~/components/MainFooter.vue";
 
 export default {
   data() {},
   components: {
-    MainNav,
+    MainNavbar,
     MainFooter
   }
 };
 </script>
 
 <style lang="stylus">
-/* все общие изменения стиля делать тут:
-assets/app.styl */
 </style>

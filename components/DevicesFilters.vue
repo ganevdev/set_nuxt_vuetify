@@ -1,9 +1,12 @@
 <template>
   <div>
 
+    <h2>Одиновная карточка:</h2>
+    <DeviceCard />
+
     <v-container fluid>
       <h3 class="title">Фильтры:</h3>
-      <v-radio-group v-model="radioPicks" row>
+      <v-radio-group v-model="DeviceType" row>
         <v-radio label="All" value="all"></v-radio>
         <v-radio label="Mice" value="mouse"></v-radio>
         <v-radio label="Keyboards" value="keyboard"></v-radio>
@@ -15,40 +18,16 @@
 
     <div v-for="device in devices" :key="device.id">
 
-      <div v-if="'all' !== radioPicks">
+      <div v-if="'all' !== DeviceType">
 
-        <div v-if="device.devices === radioPicks">
-          <!-- это должен быть отдельный компонент - карточка девайса -->
-          <div class="card ">
-            <div class="card-content ">
-              <div class="content ">
-                <ul>
-                  <li>ASIN: {{ device.ASIN }}</li>
-                  <li>title: {{ device.title }}</li>
-                  <li>brands: {{ device.brands }}</li>
-                  <li>devices(type): {{ device.devices }}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div v-if="device.devices === DeviceType">
+          <DeviceCard />
         </div>
 
       </div>
 
       <div v-else>
-        <!-- это должен быть отдельный компонент - карточка девайса -->
-        <div class="card ">
-          <div class="card-content ">
-            <div class="content ">
-              <ul>
-                <li>ASIN: {{ device.ASIN }}</li>
-                <li>title: {{ device.title }}</li>
-                <li>brands: {{ device.brands }}</li>
-                <li>devices(type): {{ device.devices }}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <DeviceCard />
       </div>
 
     </div>
@@ -58,14 +37,19 @@
 
 <script>
 import devicesJSON from "../assets/devices.json";
+//
+import DeviceCard from "~/components/DeviceCard.vue";
 
 export default {
   data: function() {
     return {
       devices: devicesJSON,
-      radioPicks: "all",
+      DeviceType: "all",
       activeTab: 0
     };
+  },
+  components: {
+    DeviceCard
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar class="navbar" dark color="primary" app>
+  <v-toolbar class="navbar" dark color="grey darken-3" app>
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn active-class="none" to="/" large flat nuxt>
         <img class="logo" src="../assets/logo.png" alt="logo"> &nbsp;&nbsp;&nbsp;&nbsp;Title&nbsp;&nbsp;
