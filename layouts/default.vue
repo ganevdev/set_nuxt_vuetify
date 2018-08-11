@@ -29,7 +29,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="stylus">
 /* все общие изменения стиля делать тут:
 assets/app.styl */
 </style>

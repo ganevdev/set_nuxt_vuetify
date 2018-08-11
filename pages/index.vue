@@ -9,5 +9,9 @@
     <v-btn primary>Primary button</v-btn>
     <v-btn secondary>Secondary button</v-btn>
     <v-btn success>Success button</v-btn>
+    <v-btn color="success">Success</v-btn>
+    <v-btn color="error">Error</v-btn>
+    <v-btn color="warning">Warning</v-btn>
+    <v-btn color="info">Info</v-btn>
   </div>
 </template>
