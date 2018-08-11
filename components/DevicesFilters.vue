@@ -1,6 +1,8 @@
 <template>
   <div>
 
+    <DevicesTypesBar />
+
     <v-container fluid>
       <h3 class="title">Фильтры:</h3>
       <v-radio-group v-model="DeviceType" row>
@@ -36,6 +38,7 @@
 import devicesJSON from "../assets/devices.json";
 //
 import DeviceCard from "~/components/DeviceCard.vue";
+import DevicesTypesBar from "~/components/DevicesTypesBar.vue";
 
 export default {
   data: function() {
@@ -46,7 +49,8 @@ export default {
     };
   },
   components: {
-    DeviceCard
+    DeviceCard,
+    DevicesTypesBar
   }
 };
 </script>

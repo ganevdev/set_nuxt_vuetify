@@ -14,6 +14,7 @@
 // Как выглядят оригинальные вариэйблы:
 // https://github.com/vuetifyjs/vuetify/tree/master/src/stylus/settings
 $font-size-root ?= 18px;
+$heading-font-family ?= 'Russo One', sans-serif;
 
 @require '~vuetify/src/stylus/settings/_colors';
 
@@ -30,6 +31,7 @@ $theme ?= {
 // Import Vuetify styling
 @require '~vuetify/src/stylus/main';
 
+// TODO задаю цвета по новой, в дущуем сделать по нормальному
 .primary {
   background-color: $red.darken-2 !important;
   border-color: $red.darken-2 !important;

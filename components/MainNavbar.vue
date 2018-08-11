@@ -15,7 +15,8 @@
 .logo {
   max-height: 64px;
 }
-.navbar, .v-btn {
+.navbar,
+.v-btn {
   font-family: "Russo One", sans-serif;
   font-size: 22px;
 }
