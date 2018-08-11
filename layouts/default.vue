@@ -1,10 +1,9 @@
 <template>
   <v-app>
-
     <MainNavbar />
 
     <v-content>
-      <v-container fluid>
+      <v-container>
         <router-view>
           <nuxt/>
         </router-view>
@@ -12,7 +11,6 @@
     </v-content>
 
     <MainFooter />
-
   </v-app>
 </template>
 

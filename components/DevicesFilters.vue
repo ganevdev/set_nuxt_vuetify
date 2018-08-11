@@ -1,9 +1,6 @@
 <template>
   <div>
 
-    <h2>Одиновная карточка:</h2>
-    <DeviceCard />
-
     <v-container fluid>
       <h3 class="title">Фильтры:</h3>
       <v-radio-group v-model="DeviceType" row>
@@ -21,13 +18,13 @@
       <div v-if="'all' !== DeviceType">
 
         <div v-if="device.devices === DeviceType">
-          <DeviceCard />
+          <DeviceCard v-bind:device="device" />
         </div>
 
       </div>
 
       <div v-else>
-        <DeviceCard />
+        <DeviceCard v-bind:device="device" />
       </div>
 
     </div>
