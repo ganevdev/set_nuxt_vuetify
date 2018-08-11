@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar dark color="primary" app>
+  <v-toolbar class="navbar" dark color="primary" app>
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn active-class="none" to="/" large flat nuxt>
         <img class="logo" src="../assets/logo.png" alt="logo"> &nbsp;&nbsp;&nbsp;&nbsp;Title&nbsp;&nbsp;
@@ -11,13 +11,12 @@
   </v-toolbar>
 </template>
 
-<style>
+<style scoped>
 .logo {
   max-height: 64px;
 }
-
-.hidden-sm-and-down {
+.navbar, .v-btn {
   font-family: "Russo One", sans-serif;
-  font-size: 28px !important;
+  font-size: 22px;
 }
 </style>
