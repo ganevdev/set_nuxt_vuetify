@@ -1,22 +1,19 @@
 <template>
-  <v-toolbar class="navbar" dark color="grey darken-3" app>
-    <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn active-class="none" to="/" large flat nuxt>
-        <img class="logo" src="../assets/logo.png" alt="logo"> &nbsp;&nbsp;&nbsp;&nbsp;Title&nbsp;&nbsp;
-      </v-btn>
-      <v-btn to="/blog" flat nuxt>Blog</v-btn>
-      <v-btn to="/devices" flat nuxt>Devices</v-btn>
-      <v-btn to="/proplayers" flat nuxt>ProPlayers</v-btn>
-    </v-toolbar-items>
+  <v-toolbar class="navbar" height="70px" dark color="grey darken-3" app>
+    <v-tab flat class="hidden-sm-and-down pa-4" to="/" nuxt><img class="logo" src="../assets/logo.png" alt="logo"></v-tab>
+    <v-tabs height="70px">
+      <v-tab to="/" nuxt>Title</v-tab>
+      <v-tab to="/blog" nuxt>Blog</v-tab>
+      <v-tab to="/devices" nuxt>Devices</v-tab>
+      <v-tab to="/proplayers" nuxt>ProPlayers</v-tab>
+    </v-tabs>
   </v-toolbar>
 </template>
 
 <style scoped>
-.logo {
-  max-height: 64px;
-}
 .navbar,
-.v-btn {
+.v-btn,
+.v-tabs__div {
   font-family: "Russo One", sans-serif;
   font-size: 20px !important;
 }
