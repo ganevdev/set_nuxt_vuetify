@@ -1,15 +1,15 @@
 <template>
   <div>
-    <DevicesFilters/>
+    <DevicesMainCatalog/>
   </div>
 </template>
 
 <script>
-import DevicesFilters from "~/components/DevicesFilters.vue";
+import DevicesMainCatalog from "~/components/DevicesMainCatalog.vue";
 
 export default {
   components: {
-    DevicesFilters
+    DevicesMainCatalog
   }
 };
 </script>

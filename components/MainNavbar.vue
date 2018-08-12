@@ -18,6 +18,6 @@
 .navbar,
 .v-btn {
   font-family: "Russo One", sans-serif;
-  font-size: 22px;
+  font-size: 20px !important;
 }
 </style>
