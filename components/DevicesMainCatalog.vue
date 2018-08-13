@@ -2,14 +2,32 @@
   <div>
 
     <DevicesTypesBar />
+    <p>&nbsp;</p>
 
+    <!-- Каталог МЫШЕК -->
     <div v-if="this.$route.name ==='devices-mouse' ">
+
+      <!-- фильтры -->
+      <!-- Форма мышки -->
+      <v-btn-toggle v-model="toggle_none">
+        <v-btn flat value="ergonomic">
+          ergonomic
+        </v-btn>
+        <v-btn flat value="ambidextrous">
+          ambidextrous
+        </v-btn>
+      </v-btn-toggle>
+      <!-- список девайсов -->
+      <p>&nbsp;</p>
+
       <div v-for="device in devices" :key="device.id">
         <div v-if="device.devices === 'mouse'">
           <DeviceCard v-bind:device="device" />
         </div>
       </div>
+
     </div>
+    <!-- /Каталог МЫШЕК -->
 
     <div v-if="this.$route.name ==='devices-keyboard' ">
       <div v-for="device in devices" :key="device.id">
@@ -94,7 +112,8 @@ export default {
     return {
       devices: devicesJSON,
       DeviceType: "all",
-      activeTab: 0
+      activeTab: 0,
+      toggle_none: null
     };
   },
   components: {
