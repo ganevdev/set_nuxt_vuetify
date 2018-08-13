@@ -9,7 +9,7 @@
 
       <!-- фильтры -->
       <!-- Форма мышки -->
-      <v-btn-toggle v-model="toggle_none">
+      <v-btn-toggle v-model="radio_filter">
         <v-btn flat value="ergonomic">
           ergonomic
         </v-btn>
@@ -17,14 +17,17 @@
           ambidextrous
         </v-btn>
       </v-btn-toggle>
+      {{ radio_filter }}
       <!-- список девайсов -->
       <p>&nbsp;</p>
 
-      <div v-for="device in devices" :key="device.id">
-        <div v-if="device.devices === 'mouse'">
+      <transition-group name="fade" tag="section">
+        <div v-for="device in FilteredDevices" :key="device.ASIN">
+          <!-- <div v-if="device.devices === 'mouse'"> -->
           <DeviceCard v-bind:device="device" />
+          <!-- </div> -->
         </div>
-      </div>
+      </transition-group>
 
     </div>
     <!-- /Каталог МЫШЕК -->
@@ -113,12 +116,19 @@ export default {
       devices: devicesJSON,
       DeviceType: "all",
       activeTab: 0,
-      toggle_none: null
+      radio_filter: []
     };
   },
   components: {
     DeviceCard,
     DevicesTypesBar
+  },
+  computed: {
+    FilteredDevices: function() {
+      return devicesJSON.filter(function(item) {
+        return item.mouse_form === "ambidextrous";
+      });
+    }
   }
 };
 </script>
