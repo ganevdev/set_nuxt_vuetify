@@ -46,7 +46,7 @@ export default {
   computed: {
     FilteredDevices: function() {
       return this.devices.filter(device => {
-        return device.title.match(this.search);
+        return device.title.toLowerCase().match(this.search.toLowerCase());
       });
     }
   }
