@@ -28,14 +28,16 @@
     <!-- TODO - сделать компонент для сортировки что бы не повторять в каждом разделе девайсов -->
     <v-flex md9>
       <v-toolbar dense>
-        <v-btn-toggle v-model="sort_devices" class="transparent">
-          <v-btn value="by_title" flat>Names</v-btn>
+        <v-btn-toggle v-model="sortParam" class="transparent">
+          <v-btn value="names" flat>Names</v-btn>
+          <v-btn value="ASIN" flat>ASIN</v-btn>
         </v-btn-toggle>
       </v-toolbar>
     </v-flex>
+    {{sortParam}}
 
     <transition-group name="fade" tag="section">
-      <div v-for="device in FilteredDevices" :key="device.ASIN">
+      <div v-for="device in productsBy" :key="device.ASIN">
         <!-- <div v-if="device.devices === 'mouse'"> -->
         <DeviceCard v-bind:device="device" />
         <!-- </div> -->
@@ -59,9 +61,11 @@ export default {
     return {
       devicesJSON: devicesJSON,
       text_search: null,
+      // фильтры
       mouse_form: null,
       mouse_sensor: null,
-      sort_devices: null
+      // сортировка
+      sortParam: "names"
     };
   },
   components: {
@@ -70,6 +74,7 @@ export default {
   },
   computed: {
     FilteredDevices() {
+      // return _.orderBy(this.devicesJSON, 'title')
       return this.devicesJSON.filter(device => {
         let filter_matches = true;
 
