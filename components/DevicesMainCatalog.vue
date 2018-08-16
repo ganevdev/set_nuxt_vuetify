@@ -5,9 +5,9 @@
     <p>&nbsp;</p>
 
     <v-flex xs12 sm6>
-      <v-text-field label="Search" v-model="search" outline></v-text-field>
+      <v-text-field label="Search" v-model="text_search" outline></v-text-field>
     </v-flex>
-    <p>{{search}}</p>
+    <p>{{text_search}}</p>
     <p>&nbsp;</p>
 
     <!-- Каталог МЫШЕК -->
@@ -48,7 +48,7 @@ export default {
   data: function() {
     return {
       devicesJSON: devicesJSON,
-      search: "",
+      text_search: "",
       mouse_form: ""
     };
   },
@@ -57,14 +57,30 @@ export default {
     DevicesTypesBar
   },
   computed: {
-    FilteredDevices: function() {
+    FilteredDevices() {
       return this.devicesJSON.filter(device => {
-        return device.title.toLowerCase().match(this.search.toLowerCase());
-      });
-    },
-    FilteredDevices_mouse_form: function() {
-      return this.devicesJSON.filter(device => {
-        return device.mouse_form.match(this.mouse_form);
+        let matches = true;
+
+        // из https://codepen.io/andreasremdt/pen/rvQJYR?editors=1010
+        // freeCodeCamp Twitch Viewer
+
+        // matches определяет для каждого девайса по отдельности
+        // пройдет ли он в лист FilteredDevices или нет
+        // каждый следующий if это фильтр,
+        // если девайс его не проходит то matches = false
+
+        if (
+          this.text_search !== "" &&
+          !device.title.toLowerCase().includes(this.text_search.toLowerCase())
+        ) {
+          matches = false;
+        }
+
+        if (this.mouse_form !== "" && this.mouse_form !== device.mouse_form) {
+          matches = false;
+        }
+
+        if (matches) return device;
       });
     }
   }
