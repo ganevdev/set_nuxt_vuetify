@@ -12,7 +12,7 @@
             <v-card-title>
               <div>
                 <h3 class="headline mb-0">{{ device.title }}</h3>
-                <v-btn v-bind:to='"/devices/" + device.devices' round small nuxt>{{ device.devices }}</v-btn>
+                <v-btn v-bind:to='"/devices/" + device.device_type' round small nuxt>{{ device.device_type }}</v-btn>
                 <v-btn v-if="device.mouse_form" round small nuxt>{{ device.mouse_form }}</v-btn>
               </div>
             </v-card-title>

@@ -19,7 +19,6 @@ import MainNavbar from "~/components/MainNavbar.vue";
 import MainFooter from "~/components/MainFooter.vue";
 
 export default {
-  data() {},
   components: {
     MainNavbar,
     MainFooter
