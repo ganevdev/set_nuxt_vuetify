@@ -71,9 +71,8 @@ export default {
     DevicesTypesBar
   },
   computed: {
-    FilteredDevices() {
-      // return _.orderBy(this.devicesJSON, 'title')
-      return this.devicesJSON.filter(device => {
+    FilteredDevices: function() {
+      let devices = this.devicesJSON.filter(device => {
         let filter_matches = true;
 
         // из https://codepen.io/andreasremdt/pen/rvQJYR?editors=1010
@@ -92,7 +91,7 @@ export default {
           filter_matches = false;
         }
 
-        // фильтр по мышиным радио кнопкам
+        // фильтр по мышиным фильтрам-радио кнопкам
         if (this.mouse_form !== null && this.mouse_form !== device.mouse_form) {
           filter_matches = false;
         }
@@ -105,12 +104,16 @@ export default {
 
         if (filter_matches) return device;
       });
-    },
-    SortedDevices() {
-      return this.FilteredDevices.slice().reverse();
-      // return this.FilteredDevices.orderBy(this.FilteredDevices, "title");
-      // return orderBy(this.FilteredDevices, "title");
+      // return _.orderBy(this.devicesJSON, 'title')
+      // return _.orderBy(this.devices, "id");
+      return devices;
+      // return devices.slice().reverse();
     }
+    // SortedDevices: function() {
+    // return this.FilteredDevices.slice().reverse();
+    // return this.FilteredDevices.orderBy(this.FilteredDevices, "title");
+    // return orderBy(this.FilteredDevices, "title");
+    // }
   }
 };
 </script>
