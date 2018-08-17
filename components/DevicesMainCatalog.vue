@@ -28,15 +28,16 @@
     <!-- TODO - сделать компонент для сортировки что бы не повторять в каждом разделе девайсов -->
     <v-flex md9>
       <v-toolbar dense>
-        <v-btn-toggle class="transparent">
-          <v-btn @click="names" flat>names</v-btn>
-          <v-btn @click="ASIN" flat>ASIN</v-btn>
+        <v-btn-toggle v-model="devices_sort" class="transparent">
+          Sort by:&nbsp;
+          <v-btn value="title" flat>names</v-btn>
+          <v-btn value="ASIN" flat>ASIN</v-btn>
         </v-btn-toggle>
       </v-toolbar>
     </v-flex>
 
     <transition-group name="fade" tag="section">
-      <div v-for="device in FilteredDevices" :key="device.ASIN">
+      <div v-for="device in SortedDevices" :key="device.ASIN">
         <!-- <div v-if="device.devices === 'mouse'"> -->
         <DeviceCard v-bind:device="device" />
         <!-- </div> -->
@@ -62,8 +63,9 @@ export default {
       text_search: null,
       // фильтры
       mouse_form: null,
-      mouse_sensor: null
+      mouse_sensor: null,
       // сортировка
+      devices_sort: "title"
     };
   },
   components: {
@@ -71,6 +73,7 @@ export default {
     DevicesTypesBar
   },
   computed: {
+    // возвращает отфильтрованные фильтрами юзера девайсы
     FilteredDevices: function() {
       let devices = this.devicesJSON.filter(device => {
         let filter_matches = true;
@@ -104,16 +107,14 @@ export default {
 
         if (filter_matches) return device;
       });
-      // return _.orderBy(this.devicesJSON, 'title')
-      // return _.orderBy(this.devices, "id");
       return devices;
-      // return devices.slice().reverse();
+    },
+    // возвращает отсортированные сортировкой девайсы
+    SortedDevices: function() {
+      // https://lodash.com/docs/4.17.10#orderBy
+      // https://vuejs.org/v2/guide/migration.html#Replacing-the-orderBy-Filter
+      return _.orderBy(this.FilteredDevices, this.devices_sort);
     }
-    // SortedDevices: function() {
-    // return this.FilteredDevices.slice().reverse();
-    // return this.FilteredDevices.orderBy(this.FilteredDevices, "title");
-    // return orderBy(this.FilteredDevices, "title");
-    // }
   }
 };
 </script>

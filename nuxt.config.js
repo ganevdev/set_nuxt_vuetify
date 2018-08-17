@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   /*
   ** Headers of the page
@@ -33,7 +35,14 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    plugins: [
+      // https://nuxtjs.org/faq/webpack-plugins/
+      new webpack.ProvidePlugin({
+        '_': 'lodash'
+        // ...etc.
+      })
+    ]
   },
   /*
   ** Load Vuetify into the app
