@@ -72,6 +72,11 @@ export default {
     DeviceCard,
     DevicesTypesBar
   },
+  methods: {
+    FilteredRadioFun: function(ValueOfRadio, ValueOfString) {
+      return ValueOfRadio !== null && ValueOfRadio !== ValueOfString;
+    }
+  },
   computed: {
     // возвращает отфильтрованные фильтрами юзера девайсы
     FilteredDevices: function() {
@@ -94,19 +99,27 @@ export default {
           filter_matches = false;
         }
 
-        // фильтр по мышиным фильтрам-радио кнопкам
-        if (this.mouse_form !== null && this.mouse_form !== device.mouse_form) {
+        if (this.FilteredRadioFun(this.mouse_form, device.mouse_form)) {
           filter_matches = false;
         }
-        if (
-          this.mouse_sensor !== null &&
-          this.mouse_sensor !== device.mouse_sensor
-        ) {
+        if (this.FilteredRadioFun(this.mouse_sensor, device.mouse_sensor)) {
           filter_matches = false;
         }
 
+        // фильтр по мышиным фильтрам-радио кнопкам
+        // if (this.mouse_form !== null && this.mouse_form !== device.mouse_form) {
+        //   filter_matches = false;
+        // }
+        // if (
+        //   this.mouse_sensor !== null &&
+        //   this.mouse_sensor !== device.mouse_sensor
+        // ) {
+        //   filter_matches = false;
+        // }
+
         if (filter_matches) return device;
       });
+
       return devices;
     },
     // возвращает отсортированные сортировкой девайсы
