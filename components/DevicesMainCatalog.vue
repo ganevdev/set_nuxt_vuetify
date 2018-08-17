@@ -36,7 +36,7 @@
     </v-flex>
 
     <transition-group name="fade" tag="section">
-      <div v-for="device in SortedDevices" :key="device.ASIN">
+      <div v-for="device in FilteredDevices" :key="device.ASIN">
         <!-- <div v-if="device.devices === 'mouse'"> -->
         <DeviceCard v-bind:device="device" />
         <!-- </div> -->
