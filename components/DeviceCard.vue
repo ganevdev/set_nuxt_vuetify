@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex md9>
+    <v-flex>
       <v-card hover>
 
         <v-layout>

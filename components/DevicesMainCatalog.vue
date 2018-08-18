@@ -26,7 +26,7 @@
 
     <!-- сортировка -->
     <!-- TODO - сделать компонент для сортировки что бы не повторять в каждом разделе девайсов -->
-    <v-flex md9>
+    <v-flex>
       <v-toolbar dense>
         <v-btn-toggle v-model="devices_sort" class="transparent" mandatory>
           Sort by:&nbsp;
