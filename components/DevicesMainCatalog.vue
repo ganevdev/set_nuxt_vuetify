@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import devicesJSON from "../assets/devices.json";
+import devicesJSON from "~/assets/devices.json";
 //
 import DeviceCard from "~/components/DeviceCard.vue";
 import DevicesTypesBar from "~/components/DevicesTypesBar.vue";
