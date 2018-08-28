@@ -1,24 +1,27 @@
-const webpack = require('webpack')
+const webpack = require("webpack");
 
 module.exports = {
   /*
   ** Headers of the page
   */
   head: {
-    title: 'set_nuxt_v',
+    title: "set_nuxt_v",
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { hid: "description", name: "description", content: "Nuxt.js project" }
     ],
     link: [
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Material+Icons' }
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css?family=Material+Icons"
+      }
     ]
   },
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: { color: "#3B8070" },
   /*
   ** Build configuration
   */
@@ -29,17 +32,17 @@ module.exports = {
     extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
-          enforce: 'pre',
+          enforce: "pre",
           test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
+          loader: "eslint-loader",
           exclude: /(node_modules)/
-        })
+        });
       }
     },
     plugins: [
       // https://nuxtjs.org/faq/webpack-plugins/
       new webpack.ProvidePlugin({
-        '_': 'lodash'
+        _: "lodash"
         // ...etc.
       })
     ]
@@ -47,9 +50,21 @@ module.exports = {
   /*
   ** Load Vuetify into the app
   */
-  plugins: ['~/plugins/vuetify'],
+  plugins: ["~/plugins/vuetify"],
   /*
   ** Load Vuetify CSS globally
   */
-  css: ['~/assets/app.styl']
-}
+  css: ["~/assets/app.styl"],
+
+  // от сюда:
+  // https://github.com/stursby/nuxt-static/blob/master/nuxt.config.js
+  // роутер для генерации страниц девайсов
+  // Generate dynamic routes
+  generate: {
+    async routes() {
+      // const { data } = await axios.get('https://jsonplaceholder.typicode.com/users')
+      const devicesJSON = "~/assets/devices.json";
+      return devicesJSON.map(device => `/devices/${device.ASIN}`);
+    }
+  }
+};

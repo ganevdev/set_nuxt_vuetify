@@ -1,5 +1,8 @@
 <template>
-  <h1>{{ device.title }}</h1>
+  <div>
+    <h1>{{ devicesJSON[1].title }}</h1>
+    <h1>ТЕСТЕСТЕСТЕТСЕТСТЕ</h1>
+  </div>
 </template>
 
 <script>

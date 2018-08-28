@@ -13,61 +13,17 @@
 
 // Как выглядят оригинальные вариэйблы:
 // https://github.com/vuetifyjs/vuetify/tree/master/src/stylus/settings
+// https://github.com/vuetifyjs/vuetify/blob/master/src/stylus/settings/_variables.styl
+// https://github.com/vuetifyjs/vuetify/blob/456049415a0d67a5d13df83e77631ccedf287e47/src/components/Vuetify/mixins/theme.ts
 $font-size-root ?= 18px;
 $heading-font-family ?= 'Russo One', sans-serif;
 
-@require '~vuetify/src/stylus/settings/_colors';
+// цвета менять здесь: plugins/vuetify.js
 
-$theme ?= {
-  primary: $red.darken-2,
-  accent: $red.accent-2,
-  secondary: $red.darken-2,
-  info: $red.darken-2,
-  warning: $red.darken-2,
-  error: $red.darken-2,
-  success: $red.darken-2
-};
+// задаю цвета из stylus файла color
+@require '~vuetify/src/stylus/settings/_colors.styl';
 
-// Import Vuetify styling
-@require '~vuetify/src/stylus/main';
-
-// TODO задаю цвета по новой, в дущуем сделать по нормальному
-.primary {
-  background-color: $red.darken-2 !important;
-  border-color: $red.darken-2 !important;
-  border-top-color: $red.darken-2 !important;
-  border-right-color: $red.darken-2 !important;
-  border-bottom-color: $red.darken-2 !important;
-  border-left-color: $red.darken-2 !important;
-}
-
-.warning {
-  background-color: $orange.darken-3 !important;
-  border-color: $orange.darken-3 !important;
-  border-top-color: $orange.darken-3 !important;
-  border-right-color: $orange.darken-3 !important;
-  border-bottom-color: $orange.darken-3 !important;
-  border-left-color: $orange.darken-3 !important;
-}
-
-.info {
-  background-color: $blue-grey.lighten-2 !important;
-  border-color: $blue-grey.lighten-2 !important;
-  border-top-color: $blue-grey.lighten-2 !important;
-  border-right-color: $blue-grey.lighten-2 !important;
-  border-bottom-color: $blue-grey.lighten-2 !important;
-  border-left-color: $blue-grey.lighten-2 !important;
-}
-
-.accent {
-  background-color: $grey.lighten-5 !important;
-  border-color: $grey.lighten-5 !important;
-  border-top-color: $grey.lighten-5 !important;
-  border-right-color: $grey.lighten-5 !important;
-  border-bottom-color: $grey.lighten-5 !important;
-  border-left-color: $grey.lighten-5 !important;
-}
-
+// сделать по нормальному кнопки-переключатели,
 .v-btn-toggle .v-btn--active.v-btn {
   background-color: $blue-grey.lighten-2 !important;
 }
@@ -75,3 +31,6 @@ $theme ?= {
 .v-btn-toggle .v-btn {
   opacity: 0.8 !important;
 }
+
+// Import Vuetify styling
+@require '~vuetify/src/stylus/main';

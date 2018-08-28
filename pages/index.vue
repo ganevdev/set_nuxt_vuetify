@@ -17,6 +17,8 @@
       <v-btn color="warning">Warning</v-btn>
       <v-btn color="info">Info</v-btn>
       <v-btn color="primary">primary</v-btn>
+      <v-btn color="secondary">Secondary</v-btn>
+      <v-btn color="accent">accent</v-btn>
     </div>
   </div>
 </template>

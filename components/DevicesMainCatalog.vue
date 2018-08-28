@@ -40,6 +40,7 @@
       <div v-for="device in SortedDevices" :key="device.ASIN">
         <!-- <div v-if="device.devices === 'mouse'"> -->
         <DeviceCard v-bind:device="device" />
+        <nuxt-link :to="{ path: `/devices/${device.ASIN}` }">{{ device.title }}</nuxt-link>
         <!-- </div> -->
       </div>
     </transition-group>
