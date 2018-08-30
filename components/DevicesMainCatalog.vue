@@ -37,7 +37,7 @@
     </v-flex>
 
     <transition-group name="fade" tag="section">
-      <div v-for="device in SortedDevices" :key="device.ASIN">
+      <div v-for="device in devices" :key="device.ASIN">
         <!-- <div v-if="device.devices === 'mouse'"> -->
         <DeviceCard v-bind:device="device" />
         <nuxt-link :to="{ path: `/devices/${device.ASIN}` }">{{ device.title }}</nuxt-link>
@@ -52,7 +52,8 @@
 </template>
 
 <script>
-import devicesJSON from "~/assets/devices.json";
+// import devicesJSON from "~/assets/devices.json";
+import store from "vuex";
 //
 import DeviceCard from "~/components/DeviceCard.vue";
 import DevicesTypesBar from "~/components/DevicesTypesBar.vue";
@@ -60,7 +61,6 @@ import DevicesTypesBar from "~/components/DevicesTypesBar.vue";
 export default {
   data: function() {
     return {
-      devicesJSON: devicesJSON,
       text_search: null,
       // фильтры
       mouse_form: null,
@@ -79,6 +79,9 @@ export default {
     }
   },
   computed: {
+    devices() {
+      return this.$store.state.devices;
+    },
     // возвращает отфильтрованные фильтрами юзера девайсы
     FilteredDevices: function() {
       let devices = this.devicesJSON.filter(device => {
