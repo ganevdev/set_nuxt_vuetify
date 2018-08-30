@@ -52,10 +52,6 @@
 </template>
 
 <script>
-// import devicesJSON from "~/assets/devices.json";
-// пробую вместо самого JSON использовать vuex
-import store from "vuex";
-//
 import DeviceCard from "~/components/DeviceCard.vue";
 import DevicesTypesBar from "~/components/DevicesTypesBar.vue";
 
@@ -80,9 +76,10 @@ export default {
     }
   },
   computed: {
-    // использую vuex - вытаскиваю из vuex store devices
+    // использую vuex
+    // первый devices это devices.js в папке store, а второй - devices заданный внутри devices.js
     devices() {
-      return this.$store.state.devices;
+      return this.$store.state.devices.devices;
     },
     // возвращает отфильтрованные фильтрами юзера девайсы
     FilteredDevices: function() {

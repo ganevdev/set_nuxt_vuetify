@@ -54,17 +54,5 @@ module.exports = {
   /*
   ** Load Vuetify CSS globally
   */
-  css: ["~/assets/app.styl"],
-
-  // от сюда:
-  // https://github.com/stursby/nuxt-static/blob/master/nuxt.config.js
-  // роутер для генерации страниц девайсов
-  // Generate dynamic routes
-  generate: {
-    async routes() {
-      // const { data } = await axios.get('https://jsonplaceholder.typicode.com/users')
-      const devicesJSON = "~/assets/devices.json";
-      return devicesJSON.map(device => `/devices/${device.ASIN}`);
-    }
-  }
+  css: ["~/assets/app.styl"]
 };
