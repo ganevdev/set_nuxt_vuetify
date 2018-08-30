@@ -37,7 +37,7 @@
     </v-flex>
 
     <transition-group name="fade" tag="section">
-      <div v-for="device in devices" :key="device.ASIN">
+      <div v-for="device in SortedDevices" :key="device.ASIN">
         <!-- <div v-if="device.devices === 'mouse'"> -->
         <DeviceCard v-bind:device="device" />
         <nuxt-link :to="{ path: `/devices/${device.ASIN}` }">{{ device.title }}</nuxt-link>
@@ -53,6 +53,7 @@
 
 <script>
 // import devicesJSON from "~/assets/devices.json";
+// пробую вместо самого JSON использовать vuex
 import store from "vuex";
 //
 import DeviceCard from "~/components/DeviceCard.vue";
@@ -79,12 +80,13 @@ export default {
     }
   },
   computed: {
+    // использую vuex - вытаскиваю из vuex store devices
     devices() {
       return this.$store.state.devices;
     },
     // возвращает отфильтрованные фильтрами юзера девайсы
     FilteredDevices: function() {
-      let devices = this.devicesJSON.filter(device => {
+      let devices = this.devices.filter(device => {
         let filter_matches = true;
 
         // из https://codepen.io/andreasremdt/pen/rvQJYR?editors=1010
