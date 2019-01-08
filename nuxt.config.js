@@ -54,5 +54,17 @@ module.exports = {
   /*
   ** Load Vuetify CSS globally
   */
-  css: ["~/assets/app.styl"]
+  css: ["~/assets/app.styl"],
+
+  // от сюда https://medium.com/a-man-with-no-server/static-site-generators-nuxt-js-2fa9782d27c8
+  // https://nuxtjs.org/api/configuration-generate#routes
+  // генерация путей для SSG
+  generate: {
+    routes: function() {
+      import devicesJSON from "~/assets/devices.json";
+      return devicesJSON.map(device => {
+        return "/devices/" + device.ASIN;
+      });
+    }
+  }
 };
